@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 const canvasSketch = require('canvas-sketch');
 const random = require('canvas-sketch-util/random');
-const math = require('canvas-sketch-util/math');
 
 class Vector {
     constructor(x, y) {
@@ -52,6 +51,7 @@ const CanvasSketchComponent = () => {
       canvas: canvasRef.current
     };
 
+   
     const sketch = ({ context, width, height }) => {
       const agents = [];
 
@@ -63,7 +63,7 @@ const CanvasSketchComponent = () => {
       }
 
       return ({ context, width, height }) => {
-        context.fillStyle = 'white';
+        context.fillStyle = 'white'; // set background color to black
         context.fillRect(0, 0, width, height);
 
         agents.forEach(agent => {
@@ -77,7 +77,9 @@ const CanvasSketchComponent = () => {
     canvasSketch(sketch, settings);
   }, []);
 
-  return <canvas ref={canvasRef} />;
-};
+  return (
+    <canvas ref={canvasRef} />
+  );
+}
 
 export default CanvasSketchComponent;
